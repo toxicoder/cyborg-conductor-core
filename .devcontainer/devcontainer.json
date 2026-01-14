@@ -1,0 +1,33 @@
+{
+    "name": "Generalized Developer Container",
+    "image": "mcr.microsoft.com/devcontainers/universal:linux",
+    "features": {
+        "ghcr.io/devcontainers/features/ansible:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/terraform:1": {
+            "version": "latest",
+            "tflint": "latest",
+            "terragrunt": "latest"
+        },
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:2": {
+            "kubectlVersion": "latest",
+            "helmVersion": "latest",
+            "minikube": "none"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "saoudrizwan.claude-dev"
+            ]
+        }
+    },
+    "postCreateCommand": [
+        "npm install -g cline",
+        "curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64",
+        "chmod +x /usr/local/bin/argocd"
+    ],
+    "mounts": [],
+    "remoteEnv": {}
+}
