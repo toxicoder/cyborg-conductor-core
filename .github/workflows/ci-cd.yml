@@ -1,0 +1,77 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.23'
+        cache: true
+
+    - name: Install dependencies
+      run: go mod tidy
+
+    - name: Run linters
+      uses: golangci/golangci-lint-action@v4
+      with:
+        version: v1.54
+
+    - name: Run tests with coverage
+      run: |
+        go test ./... -v -coverprofile=coverage.txt -covermode=atomic
+        go tool cover -func=coverage.txt
+
+    - name: Check coverage threshold
+      run: |
+        set -e
+        coverage=$(go tool cover -func=coverage.txt | grep total: | awk '{print $3}' | sed 's/%//')
+        if (( $(echo "$coverage < 90" | bc -l) )); then
+          echo "Coverage is below 90%: $coverage%"
+          exit 1
+        else
+          echo "Coverage is acceptable: $coverage%"
+        fi
+
+    - name: Run security scans
+      run: |
+        # Install security tools
+        go install github.com/securego/gosec/v2/cmd/gosec@latest
+        go install github.com/google/protobuf/cmd/protoc-gen-go@latest
+        
+        # Run security scan
+        gosec ./...
+
+    - name: Build binary
+      run: |
+        go build -o cyborg-conductor-core-server ./cmd/server
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.23'
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: false
+        tags: cyborg-conductor-core:latest

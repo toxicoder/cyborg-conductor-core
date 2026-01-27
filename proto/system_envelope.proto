@@ -1,0 +1,199 @@
+syntax = "proto3";
+package envelope.v1;
+option go_package = "github.com/toxicoder/cyborg-conductor-core/proto/v1;envelopev1";
+
+import "cyborg.proto";
+
+// SubmitJobMessage is used to submit a job to a cyborg
+message SubmitJobMessage {
+  // Unique identifier for the job
+  string job_id = 1;
+  
+  // Identifier of the cyborg to assign the job to
+  string cyborg_id = 2;
+  
+  // The actual job payload
+  bytes payload = 3;
+  
+  // Timestamp when the job was submitted
+  int64 submit_timestamp_ms = 4;
+  
+  // Deadline for job completion
+  int64 deadline_ms = 5;
+  
+  // Context metadata for the job
+  JobContext context = 6;
+}
+
+// ResultStatus indicates the status of a job execution
+message ResultStatus {
+  // Status code
+  enum StatusCode {
+    UNKNOWN = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+    TIMEOUT = 3;
+    REJECTED = 4;
+    RETRYABLE_FAILURE = 5;
+  }
+  
+  // Status code
+  StatusCode code = 1;
+  
+  // Human-readable message
+  string message = 2;
+  
+  // Timestamp when the result was generated
+  int64 timestamp_ms = 3;
+  
+  // Error details if applicable
+  string error_details = 4;
+}
+
+// JobContext contains contextual information for a job
+message JobContext {
+  // Unique identifier for the context
+  string context_id = 1;
+  
+  // Tags for filtering and grouping
+  repeated string tags = 2;
+  
+  // Metadata key-value pairs
+  map<string, string> metadata = 3;
+  
+  // Evidence data for traceability
+  bytes evidence = 4;
+}
+
+// EvidenceLogEntry represents a single entry in the evidence log
+message EvidenceLogEntry {
+  // Unique identifier for the entry
+  string entry_id = 1;
+  
+  // Timestamp of the entry
+  int64 timestamp_ms = 2;
+  
+  // Type of evidence
+  enum EvidenceType {
+    EVIDENCE_TYPE_UNSPECIFIED = 0;
+    EVIDENCE_TYPE_AUDIT = 1;
+    EVIDENCE_TYPE_METRIC = 2;
+    EVIDENCE_TYPE_LOG = 3;
+    EVIDENCE_TYPE_TRACE = 4;
+    EVIDENCE_TYPE_ERROR = 5;
+  }
+  
+  // Type of evidence
+  EvidenceType evidence_type = 3;
+  
+  // The actual evidence data
+  bytes data = 4;
+  
+  // Reference to parent entry if applicable
+  string parent_entry_id = 5;
+}
+
+// SystemState represents the current state of the system
+message SystemState {
+  // Current timestamp
+  int64 timestamp_ms = 1;
+  
+  // Overall system health status
+  SystemHealth health = 2;
+  
+  // Registered cyborgs
+  repeated CyborgDescriptor cyborgs = 3;
+  
+  // Active jobs
+  repeated ActiveJob active_jobs = 4;
+  
+  // System metrics
+  SystemMetrics metrics = 5;
+}
+
+// SystemHealth represents the health status of the system
+message SystemHealth {
+  // Overall health status
+  enum HealthStatus {
+    UNKNOWN = 0;
+    HEALTHY = 1;
+    DEGRADED = 2;
+    UNHEALTHY = 3;
+  }
+  
+  // Health status
+  HealthStatus status = 1;
+  
+  // Health check timestamp
+  int64 check_timestamp_ms = 2;
+  
+  // Health check details
+  string details = 3;
+}
+
+// ActiveJob represents an active job in the system
+message ActiveJob {
+  // Job identifier
+  string job_id = 1;
+  
+  // Cyborg identifier
+  string cyborg_id = 2;
+  
+  // Job status
+  JobStatus status = 3;
+  
+  // Submission timestamp
+  int64 submit_timestamp_ms = 4;
+  
+  // Last update timestamp
+  int64 last_update_timestamp_ms = 5;
+  
+  // Job payload
+  bytes payload = 6;
+}
+
+// JobStatus represents the status of a job
+message JobStatus {
+  // Status code
+  enum Status {
+    PENDING = 0;
+    RUNNING = 1;
+    COMPLETED = 2;
+    FAILED = 3;
+    TIMEOUT = 4;
+    CANCELLED = 5;
+  }
+  
+  // Current status
+  Status status = 1;
+  
+  // Status message
+  string message = 2;
+  
+  // Timestamp of status change
+  int64 timestamp_ms = 3;
+}
+
+// SystemMetrics contains system performance metrics
+message SystemMetrics {
+  // CPU usage percentage
+  float cpu_percent = 1;
+  
+  // Memory usage in bytes
+  int64 memory_bytes = 2;
+  
+  // Network I/O in bytes
+  int64 network_bytes = 3;
+  
+  // Disk I/O in bytes
+  int64 disk_bytes = 4;
+  
+  // Active jobs count
+  int32 active_jobs_count = 5;
+  
+  // Registered cyborgs count
+  int32 registered_cyborgs_count = 6;
+  
+  // System uptime in milliseconds
+  int64 uptime_ms = 7;
+}

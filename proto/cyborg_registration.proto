@@ -1,0 +1,32 @@
+syntax = "proto3";
+package cyborg.v1;
+option go_package = "github.com/toxicoder/cyborg-conductor-core/proto/v1;cyborgv1";
+
+import "cyborg.proto";
+
+// Cyborg Registration Service
+service CyborgRegistrationService {
+  // Register a new cyborg with the system
+  rpc RegisterCyborg(RegisterRequest) returns (RegisterResponse);
+}
+
+// Request for registering a cyborg
+message RegisterRequest {
+  // The cyborg descriptor to register
+  CyborgDescriptor cyborg_descriptor = 1;
+  
+  // Optional: Additional metadata for registration
+  map<string, string> metadata = 2;
+}
+
+// Response for cyborg registration
+message RegisterResponse {
+  // Success status
+  bool success = 1;
+  
+  // Error message if registration failed
+  string error_message = 2;
+  
+  // Unique identifier assigned by the system (if not provided in request)
+  string registered_cyborg_id = 3;
+}

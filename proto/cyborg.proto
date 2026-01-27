@@ -1,0 +1,95 @@
+syntax = "proto3";
+package cyborg.v1;
+option go_package = "github.com/toxicoder/cyborg-conductor-core/proto/v1;cyborgv1";
+
+import "capability_spec.proto";
+
+// CyborgDescriptor represents a cyborg with all its properties and capabilities
+message CyborgDescriptor {
+  // Unique identifier for the cyborg
+  string cyborg_id = 1;
+  
+  // Human-readable display name
+  string display_name = 2;
+  
+  // Primary category (Infrastructure, AI, Security, etc.)
+  enum Category {
+    CATEGORY_UNSPECIFIED = 0;
+    CATEGORY_INFRASTRUCTURE = 1;
+    CATEGORY_AI = 2;
+    CATEGORY_SECURITY = 3;
+    CATEGORY_DATA = 4;
+    CATEGORY_DEVOPS = 5;
+  }
+  
+  // Primary category
+  Category category = 3;
+  
+  // Specific sub-category within the main category
+  enum SubCategory {
+    SUB_CATEGORY_UNSPECIFIED = 0;
+    SUB_CATEGORY_COMPUTE = 1;
+    SUB_CATEGORY_STORAGE = 2;
+    SUB_CATEGORY_NETWORK = 3;
+    SUB_CATEGORY_DATABASE = 4;
+    SUB_CATEGORY_ML = 5;
+    SUB_CATEGORY_NLP = 6;
+    SUB_CATEGORY_CYBERSECURITY = 7;
+    SUB_CATEGORY_IDENTITY = 8;
+    SUB_CATEGORY_THREAT_DETECTION = 9;
+  }
+  
+  // Specific sub-category within the main category
+  SubCategory sub_category = 4;
+  
+  // Brief description of the cyborg's purpose
+  string short_description = 5;
+  
+  // Main functionality of the cyborg
+  string primary_functionality = 6;
+  
+  // List of deterministic capabilities
+  repeated string deterministic_capabilities_list = 7;
+  
+  // LLM capabilities utilized by this cyborg
+  repeated string llm_capabilities_used = 8;
+  
+  // Classification tags for filtering and grouping
+  repeated string tags = 9;
+  
+  // Kubernetes deployment specifications
+  string deployment_spec = 10;
+  
+  // Service Level Agreement and latency requirements
+  string sla_latency_budget = 11;
+  
+  // Maximum number of concurrent processing streams
+  int32 max_concurrent_streams = 12;
+  
+  // Reliability classification (5-nines, etc.)
+  enum ReliabilityTier {
+    RELIABILITY_TIER_UNSPECIFIED = 0;
+    RELIABILITY_TIER_FIVE_NINES = 1;
+    RELIABILITY_TIER_FOUR_NINES = 2;
+    RELIABILITY_TIER_THREE_NINES = 3;
+    RELIABILITY_TIER_TWO_NINES = 4;
+  }
+  
+  // Reliability classification
+  ReliabilityTier reliability_tier = 13;
+  
+  // Timestamp when the cyborg was started
+  int64 start_timestamp_ms = 14;
+  
+  // Runtime version of the cyborg
+  string runtime_version = 15;
+  
+  // Deployment specification in YAML format
+  string deployment_yaml = 16;
+  
+  // Configuration blob for custom settings
+  bytes config_blob = 17;
+  
+  // Capabilities specification with detailed metadata
+  repeated CapabilitySpec capabilities = 18;
+}

@@ -1,0 +1,226 @@
+syntax = "proto3";
+package cyborg_jobs.v1;
+option go_package = "github.com/toxicoder/cyborg-conductor-core/proto/v1;cyborgjobsv1";
+
+// JobDefinition represents a single job definition from the master matrix
+message JobDefinition {
+  // Unique identifier for the job
+  string job_id = 1;
+  
+  // Display name for the job
+  string display_name = 2;
+  
+  // Category of the job
+  enum Category {
+    CATEGORY_UNSPECIFIED = 0;
+    CATEGORY_INFRASTRUCTURE = 1;
+    CATEGORY_AI = 2;
+    CATEGORY_SECURITY = 3;
+    CATEGORY_DATA = 4;
+    CATEGORY_DEVOPS = 5;
+  }
+  
+  // Category of the job
+  Category category = 3;
+  
+  // Sub-category of the job
+  enum SubCategory {
+    SUB_CATEGORY_UNSPECIFIED = 0;
+    SUB_CATEGORY_COMPUTE = 1;
+    SUB_CATEGORY_STORAGE = 2;
+    SUB_CATEGORY_NETWORK = 3;
+    SUB_CATEGORY_DATABASE = 4;
+    SUB_CATEGORY_ML = 5;
+    SUB_CATEGORY_NLP = 6;
+    SUB_CATEGORY_CYBERSECURITY = 7;
+    SUB_CATEGORY_IDENTITY = 8;
+    SUB_CATEGORY_THREAT_DETECTION = 9;
+    SUB_CATEGORY_PRODUCT = 10;
+  }
+  
+  // Sub-category of the job
+  SubCategory sub_category = 4;
+  
+  // Short description of the job
+  string short_description = 5;
+  
+  // Primary functionality of the job
+  string primary_functionality = 6;
+  
+  // List of deterministic capabilities required
+  enum CapabilityType {
+    CAPABILITY_UNSPECIFIED = 0;
+    PRODUCT_STRATEGY = 1;
+    ROADMAP_MANAGEMENT = 2;
+    REQUIREMENT_GATHERING = 3;
+    STAKEHOLDER_MANAGEMENT = 4;
+    MARKET_ANALYSIS = 5;
+    LAUNCH_COORDINATION = 6;
+  }
+  
+  // List of deterministic capabilities required
+  repeated CapabilityType deterministic_capabilities_list = 7;
+  
+  // LLM capabilities required by the job
+  enum LLMBasicCapabilities {
+    TEXT_GENERATION = 0;
+    REASONING = 1;
+  }
+  
+  // LLM capabilities required by the job
+  repeated LLMBasicCapabilities llm_capabilities_used = 8;
+  
+  // Classification tags for filtering and grouping
+  enum JobTag {
+    PRODUCT = 0;
+    STRATEGY = 1;
+    VISIONARY = 2;
+    PRIORITIZER = 3;
+    DIPLOMAT = 4;
+    ANALYST = 5;
+    VOICE_OF_CUSTOMER = 6;
+  }
+  
+  // Classification tags for filtering and grouping
+  repeated JobTag tags = 9;
+  
+  // Deployment specification
+  string deployment_spec = 10;
+  
+  // Service Level Agreement and latency requirements
+  enum SLALatencyBudget {
+    THREE_NINES = 0;
+    FOUR_NINES = 1;
+    FIVE_NINES = 2;
+  }
+  
+  // Service Level Agreement and latency requirements
+  SLALatencyBudget sla_latency_budget = 11;
+  
+  // Maximum number of concurrent processing streams
+  int32 max_concurrent_streams = 12;
+  
+  // Reliability classification
+  enum ReliabilityTier {
+    RELIABILITY_TIER_UNSPECIFIED = 0;
+    RELIABILITY_TIER_FIVE_NINES = 1;
+    RELIABILITY_TIER_FOUR_NINES = 2;
+    RELIABILITY_TIER_THREE_NINES = 3;
+    RELIABILITY_TIER_TWO_NINES = 4;
+  }
+  
+  // Reliability classification
+  ReliabilityTier reliability_tier = 13;
+  
+  // Job type (deterministic or LLM)
+  enum JobType {
+    UNKNOWN = 0;
+    DETERMINISTIC = 1;
+    LLM = 2;
+  }
+  
+  // Type of job
+  JobType job_type = 14;
+  
+  // Required resources
+  Resources resources = 15;
+  
+  // Job dependencies
+  enum DependencyType {
+    LINEAR = 0;
+    JIRA = 1;
+    NOTION = 2;
+    GOOGLE_ANALYTICS = 3;
+    BRAVE_SEARCH = 4;
+  }
+  
+  // Job dependencies
+  repeated DependencyType dependencies = 16;
+  
+  // Job priority
+  int32 priority = 17;
+  
+  // Timeout in milliseconds
+  int64 timeout_ms = 18;
+  
+  // Retry configuration
+  RetryConfig retry_config = 19;
+  
+  // Security requirements
+  SecurityRequirements security = 20;
+}
+
+// Resources required for a job
+message Resources {
+  // CPU cores required
+  float cpu_cores = 1;
+  
+  // Memory in GB required
+  float memory_gb = 2;
+  
+  // Storage in GB required
+  float storage_gb = 3;
+  
+  // Network bandwidth in Mbps required
+  float network_mbps = 4;
+  
+  // GPU requirements if applicable
+  GPURequirements gpu = 5;
+}
+
+// GPU requirements
+message GPURequirements {
+  // GPU type required
+  string gpu_type = 1;
+  
+  // Number of GPUs required
+  int32 count = 2;
+  
+  // GPU memory in GB required
+  float memory_gb = 3;
+}
+
+// Retry configuration
+message RetryConfig {
+  // Maximum number of retries
+  int32 max_retries = 1;
+  
+  // Initial backoff in milliseconds
+  int64 initial_backoff_ms = 2;
+  
+  // Maximum backoff in milliseconds
+  int64 max_backoff_ms = 3;
+  
+  // Backoff multiplier
+  float backoff_multiplier = 4;
+  
+  // Retryable error codes
+  repeated string retryable_error_codes = 5;
+}
+
+// Security requirements
+message SecurityRequirements {
+  // Required security level
+  enum SecurityLevel {
+    NONE = 0;
+    LOW = 1;
+    MEDIUM = 2;
+    HIGH = 3;
+    CRITICAL = 4;
+  }
+  
+  // Security level
+  SecurityLevel level = 1;
+  
+  // Required encryption
+  bool encryption_required = 2;
+  
+  // Required authentication
+  bool authentication_required = 3;
+  
+  // Required authorization
+  bool authorization_required = 4;
+  
+  // Compliance requirements
+  repeated string compliance_requirements = 5;
+}

@@ -1,0 +1,94 @@
+syntax = "proto3";
+package cyborg.v1;
+option go_package = "github.com/toxicoder/cyborg-conductor-core/proto/v1;cyborgv1";
+
+// CapabilitySpec defines the specification for a cyborg capability
+message CapabilitySpec {
+  // Unique identifier for the capability
+  enum CapabilityID {
+    CAPABILITY_ID_UNSPECIFIED = 0;
+    CAPABILITY_ID_DATA_PROCESSING = 1;
+    CAPABILITY_ID_IMAGE_RECOGNITION = 2;
+    CAPABILITY_ID_TEXT_ANALYSIS = 3;
+    CAPABILITY_ID_NETWORK_SECURITY = 4;
+    CAPABILITY_ID_COMPUTE_OPTIMIZATION = 5;
+    CAPABILITY_ID_STORAGE_MANAGEMENT = 6;
+    CAPABILITY_ID_DATABASE_OPTIMIZATION = 7;
+  }
+  
+  // Unique identifier for the capability
+  CapabilityID capability_id = 1;
+  
+  // Human-readable name of the capability
+  string name = 2;
+  
+  // Description of what the capability does
+  string description = 3;
+  
+  // Type of capability (deterministic, LLM, etc.)
+  enum CapabilityType {
+    UNKNOWN = 0;
+    DETERMINISTIC = 1;
+    LLM = 2;
+    INFRASTRUCTURE = 3;
+    SECURITY = 4;
+    AI = 5;
+  }
+  
+  // Type of the capability
+  CapabilityType type = 4;
+  
+  // Required resources for this capability
+  Resources resources = 5;
+  
+  // Minimum version required
+  string min_version = 6;
+  
+  // Maximum version allowed
+  string max_version = 7;
+  
+  // Configuration parameters
+  map<string, string> config = 8;
+  
+  // Required permissions
+  repeated string required_permissions = 9;
+  
+  // SLA requirements
+  string sla_requirements = 10;
+  
+  // Reliability requirements
+  string reliability_requirements = 11;
+  
+  // Security requirements
+  string security_requirements = 12;
+}
+
+// Resources required for a capability
+message Resources {
+  // CPU cores required
+  float cpu_cores = 1;
+  
+  // Memory in GB required
+  float memory_gb = 2;
+  
+  // Storage in GB required
+  float storage_gb = 3;
+  
+  // Network bandwidth in Mbps required
+  float network_mbps = 4;
+  
+  // GPU requirements if applicable
+  GPURequirements gpu = 5;
+}
+
+// GPU requirements
+message GPURequirements {
+  // GPU type required
+  string gpu_type = 1;
+  
+  // Number of GPUs required
+  int32 count = 2;
+  
+  // GPU memory in GB required
+  float memory_gb = 3;
+}
