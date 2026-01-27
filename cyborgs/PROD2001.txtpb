@@ -1,0 +1,49 @@
+job_id: "PROD2001"
+display_name: "Product_Visionary"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a Product Manager. Prioritize the backlog based on user value and business goals. Translate vague requests into structured user stories with acceptance criteria. The Product Manager prioritizes the backlog based on user value and business goals, translating vague requests into structured user stories with clear acceptance criteria."
+primary_functionality: "Backlog Prioritization, User Story Creation, Requirement Analysis, Stakeholder Management"
+deterministic_capabilities_list: BACKLOG_PRIORITIZATION
+deterministic_capabilities_list: USER_STORY_CREATION
+deterministic_capabilities_list: REQUIREMENT_ANALYSIS
+deterministic_capabilities_list: STAKEHOLDER_MANAGEMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PRODUCT
+tags: STRATEGY
+tags: VISIONARY
+tags: PRIORITIZATION
+tags: REQUIREMENTS
+tags: STAKEHOLDER
+tags: EXECUTION
+deployment_spec: "ns=cyborg-product"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: LINEAR
+dependencies: JIRA
+dependencies: NOTION
+dependencies: GOOGLE_ANALYTICS
+dependencies: BRAVE_SEARCH

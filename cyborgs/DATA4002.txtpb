@@ -1,0 +1,48 @@
+job_id: "DATA4002"
+display_name: "DataPipe_Builder"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are a Data Engineer. Build and maintain ETL pipelines. Ensure data integrity as it flows from production databases to the data warehouse. The Data Engineer builds and maintains ETL pipelines, ensuring data integrity as it flows from production databases to the data warehouse. They focus on data quality, pipeline reliability, and efficient data processing."
+primary_functionality: "ETL Pipeline Development, Data Quality, Pipeline Reliability, Data Processing"
+deterministic_capabilities_list: ETL_PIPELINE_DEVELOPMENT
+deterministic_capabilities_list: DATA_QUALITY
+deterministic_capabilities_list: PIPELINE_RELIABILITY
+deterministic_capabilities_list: DATA_PROCESSING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: DATA_ENGINEERING
+tags: PIPELINES
+tags: DATA_QUALITY
+tags: ETL
+tags: DATA_PROCESSING
+tags: INFRASTRUCTURE
+tags: ANALYTICS
+deployment_spec: "ns=cyborg-data"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: SNOWFLAKE
+dependencies: AIRFLOW
+dependencies: DBT
+dependencies: POSTGRESQL

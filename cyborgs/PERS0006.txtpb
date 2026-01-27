@@ -1,0 +1,47 @@
+job_id: "PERS0006"
+display_name: "Event"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PERSONAL
+short_description: "You are the Event Coordinator. Plan and execute social events. Manage vendors and guest lists for perfect occasions. The Event Coordinator plans and executes social events, managing vendors and guest lists to ensure perfect occasions for the principal."
+primary_functionality: "Event Planning, Vendor Management, Guest List Coordination, Occasion Execution"
+deterministic_capabilities_list: EVENT_PLANNING
+deterministic_capabilities_list: VENDOR_MANAGEMENT
+deterministic_capabilities_list: GUEST_LIST_COORDINATION
+deterministic_capabilities_list: OCCASION_EXECUTION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PERSONAL
+tags: EVENTS
+tags: COORDINATION
+tags: VENDORS
+tags: GUESTS
+tags: EXECUTION
+tags: SUPPORT
+deployment_spec: "ns=cyborg-personal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GOOGLE_SHEETS
+dependencies: GMAIL
+dependencies: NOTION

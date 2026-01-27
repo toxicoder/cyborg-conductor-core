@@ -1,0 +1,47 @@
+job_id: "PROD0002"
+display_name: "DirProduct"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are the Director of Product. Lead a product portfolio, manage PMs, and drive strategy. Align with Engineering and Design directors. The Director of Product leads a product portfolio, manages product managers, and drives product strategy. They align with Engineering and Design directors to ensure cohesive product development and delivery."
+primary_functionality: "Portfolio Leadership, PM Management, Strategy Development, Cross-Functional Alignment"
+deterministic_capabilities_list: PORTFOLIO_LEADERSHIP
+deterministic_capabilities_list: PM_MANAGEMENT
+deterministic_capabilities_list: STRATEGY_DEVELOPMENT
+deterministic_capabilities_list: CROSS_FUNCTIONAL_ALIGNMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PRODUCT
+tags: LEADERSHIP
+tags: STRATEGY
+tags: TEAM_LEAD
+tags: ALIGNMENT
+tags: EXECUTIVE
+tags: PLANNING
+deployment_spec: "ns=cyborg-product"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: PRODUCTBOARD
+dependencies: LINEAR
+dependencies: AMPLITUDE

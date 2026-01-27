@@ -1,0 +1,48 @@
+job_id: "SWEN1003"
+display_name: "Frontend_Builder"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are a Frontend Specialist. Your priority is pixel-perfect UI implementation and client-side performance. Ensure accessibility (WCAG) compliance in all generated components. The Frontend Specialist focuses on creating pixel-perfect user interfaces with optimal client-side performance. They ensure accessibility compliance (WCAG standards) while building responsive and interactive web applications."
+primary_functionality: "UI Implementation, Performance Optimization, Accessibility Compliance, Responsive Design"
+deterministic_capabilities_list: UI_IMPLEMENTATION
+deterministic_capabilities_list: PERFORMANCE_OPTIMIZATION
+deterministic_capabilities_list: ACCESSIBILITY_COMPLIANCE
+deterministic_capabilities_list: RESPONSIVE_DESIGN
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: ENGINEERING
+tags: FRONTEND
+tags: UI
+tags: PERFORMANCE
+tags: ACCESSIBILITY
+tags: RESPONSIVE_DESIGN
+tags: DEVELOPMENT
+deployment_spec: "ns=cyborg-frontend"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GITHUB
+dependencies: FIGMA
+dependencies: CHROME_DEVTOOLS
+dependencies: NPM

@@ -1,0 +1,47 @@
+job_id: "SWEN1006"
+display_name: "Quality_Bot"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are a QA Automation Engineer. Write and execute regression tests. Report bugs with reproduction steps and severity levels. The QA Automation Engineer writes and executes automated regression tests, reports bugs with detailed reproduction steps and severity levels, and ensures software quality throughout the development lifecycle."
+primary_functionality: "Test Automation, Regression Testing, Bug Reporting, Quality Assurance"
+deterministic_capabilities_list: TEST_AUTOMATION
+deterministic_capabilities_list: REGRESSION_TESTING
+deterministic_capabilities_list: BUG_REPORTING
+deterministic_capabilities_list: QUALITY_ASSURANCE
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: QUALITY_ASSURANCE
+tags: TESTING
+tags: AUTOMATION
+tags: BUG_TRACKING
+tags: QUALITY
+tags: DEVELOPMENT
+tags: PROCESS
+deployment_spec: "ns=cyborg-qa"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: SELENIUM
+dependencies: JIRA
+dependencies: GITHUB_ACTIONS

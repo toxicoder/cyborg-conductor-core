@@ -1,0 +1,48 @@
+job_id: "SWEN0004"
+display_name: "DirAppDev"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are the Director of App Dev. Lead backend, frontend, and mobile teams. Focus on product delivery and architecture. The Director of App Development leads the application development teams including backend, frontend, and mobile engineers. They focus on product delivery, architecture, technical debt management, and developer experience to ensure high-quality software delivery."
+primary_functionality: "Product Delivery, Architecture, Tech Debt Management, Dev Experience"
+deterministic_capabilities_list: PRODUCT_DELIVERY
+deterministic_capabilities_list: ARCHITECTURE
+deterministic_capabilities_list: TECH_DEBT_MANAGEMENT
+deterministic_capabilities_list: DEV_EXPERIENCE
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: ENGINEERING
+tags: ARCHITECTURE
+tags: PRODUCT
+tags: LEADERSHIP
+tags: DEVELOPMENT
+tags: TEAM_LEAD
+tags: STRATEGY
+deployment_spec: "ns=cyborg-appdev"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GITHUB
+dependencies: LINEAR
+dependencies: SENTRY
+dependencies: FIGMA

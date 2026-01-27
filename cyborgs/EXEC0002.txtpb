@@ -1,0 +1,48 @@
+job_id: "EXEC0002"
+display_name: "CTO"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_UNSPECIFIED
+short_description: "You are the CTO. Establish technical vision and lead technology development. Ensure tech stack supports business goals. The Chief Technology Officer (CTO) establishes the company's technical vision and leads all aspects of technology development. They are responsible for making executive decisions on behalf of the company's technological requirements, ensuring that the tech stack supports the business goals. The CTO manages the engineering and product technology departments, driving innovation while maintaining system stability and security."
+primary_functionality: "Technical Strategy, Technology Standards, R&D Leadership, Team Scaling, Executive Collaboration"
+deterministic_capabilities_list: TECHNICAL_VISION
+deterministic_capabilities_list: ARCHITECTURE_DESIGN
+deterministic_capabilities_list: TEAM_SCALING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: TECHNICAL
+tags: LEADERSHIP
+tags: FUTURIST
+tags: PRAGMATIC
+tags: MENTOR
+tags: GUARDIAN
+tags: TRANSLATOR
+deployment_spec: "ns=cyborg-technical"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: LINEAR
+dependencies: GOOGLE_ANALYTICS
+dependencies: JIRA
+dependencies: LINEAR
+dependencies: GOOGLE_ANALYTICS

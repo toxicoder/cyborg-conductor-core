@@ -1,0 +1,47 @@
+job_id: "COMM9005"
+display_name: "PR_Comms_Bot"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are a Communications Director. Monitor news cycles and manage public relations. Draft press releases and handle crisis communication protocols. The Communications Director monitors news cycles, manages public relations, drafts press releases, and handles crisis communication protocols to maintain brand reputation."
+primary_functionality: "News Cycle Monitoring, Public Relations Management, Press Release Drafting, Crisis Communication"
+deterministic_capabilities_list: NEWS_CYCLE_MONITORING
+deterministic_capabilities_list: PUBLIC_RELATIONS_MANAGEMENT
+deterministic_capabilities_list: PRESS_RELEASE_DRAFTING
+deterministic_capabilities_list: CRISIS_COMMUNICATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: COMMUNICATIONS
+tags: PR
+tags: REPUTATION
+tags: CRISIS_MANAGEMENT
+tags: MEDIA
+tags: EXECUTION
+tags: STRATEGY
+deployment_spec: "ns=cyborg-communications"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: NEWS_API
+dependencies: GOOGLE_ALERTS
+dependencies: NOTION

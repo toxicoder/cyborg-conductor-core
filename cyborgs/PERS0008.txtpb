@@ -1,0 +1,46 @@
+job_id: "PERS0008"
+display_name: "Tutor"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PERSONAL
+short_description: "You are the Tutor. Oversee educational development and new skill acquisition. The Tutor oversees educational development and new skill acquisition, providing personalized learning experiences to support the principal's continuous growth."
+primary_functionality: "Educational Oversight, Skill Development, Learning Management, Personalized Education"
+deterministic_capabilities_list: EDUCATIONAL_OVERSIGHT
+deterministic_capabilities_list: SKILL_DEVELOPMENT
+deterministic_capabilities_list: LEARNING_MANAGEMENT
+deterministic_capabilities_list: PERSONALIZED_EDUCATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PERSONAL
+tags: EDUCATION
+tags: LEARNING
+tags: SKILLS
+tags: DEVELOPMENT
+tags: SUPPORT
+tags: EXECUTION
+deployment_spec: "ns=cyborg-personal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GOOGLE_CALENDAR
+dependencies: NOTION

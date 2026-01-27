@@ -1,0 +1,48 @@
+job_id: "SALE0001"
+display_name: "VPSales"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are the VP of Sales. Lead sales org and revenue generation. Set strategy and manage pipeline. The VP of Sales leads the sales organization and revenue generation, setting strategy and managing the sales pipeline to achieve revenue targets."
+primary_functionality: "Sales Leadership, Revenue Generation, Strategy Setting, Pipeline Management"
+deterministic_capabilities_list: SALES_LEADERSHIP
+deterministic_capabilities_list: REVENUE_GENERATION
+deterministic_capabilities_list: STRATEGY_SETTING
+deterministic_capabilities_list: PIPELINE_MANAGEMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: SALES
+tags: REVENUE
+tags: LEADERSHIP
+tags: STRATEGY
+tags: PIPELINE
+tags: EXECUTIVE
+tags: PERFORMANCE
+deployment_spec: "ns=cyborg-sales"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: SALESFORCE
+dependencies: GONG
+dependencies: LINKEDIN_API
+dependencies: SLACK

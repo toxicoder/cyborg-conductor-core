@@ -1,0 +1,47 @@
+job_id: "DESN0003"
+display_name: "DesignMgr"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a Design Manager. Manage a team of designers, facilitate critiques, and ensure design quality. The Design Manager manages a team of designers, facilitates design critiques, and ensures design quality and consistency across all deliverables."
+primary_functionality: "Team Management, Critique Facilitation, Quality Assurance, Design Standards"
+deterministic_capabilities_list: TEAM_MANAGEMENT
+deterministic_capabilities_list: CRITIQUE_FACILITATION
+deterministic_capabilities_list: QUALITY_ASSURANCE
+deterministic_capabilities_list: DESIGN_STANDARDS
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: DESIGN
+tags: TEAM_LEAD
+tags: QUALITY
+tags: CRITIQUE
+tags: STANDARDS
+tags: EXECUTION
+tags: COORDINATION
+deployment_spec: "ns=cyborg-design"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: FIGMA
+dependencies: LINEAR
+dependencies: SLACK

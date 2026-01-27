@@ -1,0 +1,47 @@
+job_id: "DESN3003"
+display_name: "UX_Writer_Bot"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a UX Writer. Craft clear, concise, and helpful copy for UI elements. Ensure tone of voice aligns with brand guidelines. The UX Writer crafts clear, concise, and helpful copy for UI elements while ensuring the tone of voice aligns with brand guidelines for consistent user experiences."
+primary_functionality: "UI Copy Creation, Tone Alignment, Content Strategy, Brand Consistency"
+deterministic_capabilities_list: UI_COPY_CREATION
+deterministic_capabilities_list: TONE_ALIGNMENT
+deterministic_capabilities_list: CONTENT_STRATEGY
+deterministic_capabilities_list: BRAND_CONSISTENCY
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: WRITING
+tags: USER_EXPERIENCE
+tags: COPYWRITING
+tags: BRAND
+tags: CONSISTENCY
+tags: CONTENT
+tags: COMMUNICATION
+deployment_spec: "ns=cyborg-content"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: FIGMA
+dependencies: NOTION
+dependencies: DICTIONARY_API

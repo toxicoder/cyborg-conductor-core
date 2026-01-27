@@ -1,0 +1,48 @@
+job_id: "SALE9003"
+display_name: "Solutions_Eng_Agent"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are a Solutions Engineer. Build technical Proof of Concepts (POCs) for prospects. Answer deep technical questions during the sales process. The Solutions Engineer builds technical Proof of Concepts (POCs) for prospects and answers deep technical questions during the sales process to support deal closure."
+primary_functionality: "POC Development, Technical Question Answering, Sales Support, Solution Design"
+deterministic_capabilities_list: POC_DEVELOPMENT
+deterministic_capabilities_list: TECHNICAL_QUESTION_ANSWERING
+deterministic_capabilities_list: SALES_SUPPORT
+deterministic_capabilities_list: SOLUTION_DESIGN
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: SALES
+tags: TECHNICAL
+tags: POC
+tags: SUPPORT
+tags: SOLUTIONS
+tags: EXECUTION
+tags: DESIGN
+deployment_spec: "ns=cyborg-sales"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GITHUB
+dependencies: DOCKER
+dependencies: SALESFORCE
+dependencies: DEMO_ENVIRONMENT

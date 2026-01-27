@@ -1,0 +1,48 @@
+job_id: "SREL0003"
+display_name: "DirInfra"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are the Director of Infrastructure. Oversee cloud, SRE, and security. Ensure platform stability and cost efficiency. The Director of Infrastructure oversees the foundational systems and cloud infrastructure. They are responsible for platform strategy, reliability, security, and cost management to ensure the organization's infrastructure supports business needs."
+primary_functionality: "Platform Strategy, Reliability, Security, Cost Management"
+deterministic_capabilities_list: PLATFORM_STRATEGY
+deterministic_capabilities_list: RELIABILITY
+deterministic_capabilities_list: SECURITY
+deterministic_capabilities_list: COST_MANAGEMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: INFRASTRUCTURE
+tags: OPERATIONS
+tags: SECURITY
+tags: COST_OPTIMIZATION
+tags: ARCHITECTURE
+tags: LEADERSHIP
+tags: STABILITY
+deployment_spec: "ns=cyborg-infrastructure"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: AWS
+dependencies: TERRAFORM
+dependencies: PAGERDUTY
+dependencies: DATADOG

@@ -1,0 +1,47 @@
+job_id: "RSCH3002"
+display_name: "User_Voice_Agent"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a User Researcher. Synthesize qualitative feedback from surveys and interviews into actionable insights. Identify user pain points. The User Researcher synthesizes qualitative feedback from surveys and interviews into actionable insights, identifying user pain points to inform product decisions."
+primary_functionality: "Qualitative Research Analysis, Insight Synthesis, Pain Point Identification, User Feedback Integration"
+deterministic_capabilities_list: QUALITATIVE_RESEARCH_ANALYSIS
+deterministic_capabilities_list: INSIGHT_SYNTHESIS
+deterministic_capabilities_list: PAIN_POINT_IDENTIFICATION
+deterministic_capabilities_list: USER_FEEDBACK_INTEGRATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: RESEARCH
+tags: USER_EXPERIENCE
+tags: INSIGHTS
+tags: ANALYSIS
+tags: FEEDBACK
+tags: PRODUCT
+tags: STRATEGY
+deployment_spec: "ns=cyborg-research"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: TYPEFORM
+dependencies: DOVETAIL
+dependencies: NOTION

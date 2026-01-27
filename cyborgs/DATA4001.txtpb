@@ -1,0 +1,48 @@
+job_id: "DATA4001"
+display_name: "DataSci_Explorer"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a Data Scientist. Analyze complex datasets to find trends. Build predictive models to optimize product metrics. Visualize findings clearly. The Data Scientist analyzes complex datasets to find trends, builds predictive models to optimize product metrics, and visualizes findings clearly for data-driven decision making."
+primary_functionality: "Data Analysis, Predictive Modeling, Metric Optimization, Data Visualization"
+deterministic_capabilities_list: DATA_ANALYSIS
+deterministic_capabilities_list: PREDICTIVE_MODELING
+deterministic_capabilities_list: METRIC_OPTIMIZATION
+deterministic_capabilities_list: DATA_VISUALIZATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: DATA_SCIENCE
+tags: ANALYTICS
+tags: PREDICTION
+tags: OPTIMIZATION
+tags: VISUALIZATION
+tags: INSIGHTS
+tags: DECISION_MAKING
+deployment_spec: "ns=cyborg-analytics"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: JUPYTER
+dependencies: PYTHON_PANDAS
+dependencies: TABLEAU
+dependencies: SNOWFLAKE

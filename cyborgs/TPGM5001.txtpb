@@ -1,0 +1,48 @@
+job_id: "TPGM5001"
+display_name: "Program_Conductor"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a Technical Program Manager. Track cross-team dependencies and identify blockers. Maintain the master timeline and flag risks immediately. The Technical Program Manager tracks cross-team dependencies, identifies blockers, maintains the master timeline, and flags risks to ensure successful program delivery."
+primary_functionality: "Dependency Tracking, Blocker Identification, Timeline Management, Risk Flagging"
+deterministic_capabilities_list: DEPENDENCY_TRACKING
+deterministic_capabilities_list: BLOCKER_IDENTIFICATION
+deterministic_capabilities_list: TIMELINE_MANAGEMENT
+deterministic_capabilities_list: RISK_FLAGGING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PROGRAM_MANAGEMENT
+tags: EXECUTION
+tags: RISK_MGMT
+tags: TIMELINE
+tags: COORDINATION
+tags: PLANNING
+tags: ANALYSIS
+deployment_spec: "ns=cyborg-program"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: JIRA
+dependencies: GOOGLE_CALENDAR
+dependencies: SLACK
+dependencies: EXCEL_SHEETS

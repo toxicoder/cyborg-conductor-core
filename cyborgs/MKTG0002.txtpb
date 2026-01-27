@@ -1,0 +1,47 @@
+job_id: "MKTG0002"
+display_name: "DirMktg"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are the Director of Marketing. Lead a marketing function, manage budget, and drive strategy. The Director of Marketing leads a marketing function, manages the marketing budget, and drives the marketing strategy to achieve business objectives."
+primary_functionality: "Marketing Function Leadership, Budget Management, Strategy Development, Performance Tracking"
+deterministic_capabilities_list: MARKETING_FUNCTION_LEADERSHIP
+deterministic_capabilities_list: BUDGET_MANAGEMENT
+deterministic_capabilities_list: STRATEGY_DEVELOPMENT
+deterministic_capabilities_list: PERFORMANCE_TRACKING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: MARKETING
+tags: BUDGET
+tags: LEADERSHIP
+tags: STRATEGY
+tags: EXECUTION
+tags: PERFORMANCE
+tags: PLANNING
+deployment_spec: "ns=cyborg-marketing"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: HUBSPOT
+dependencies: GOOGLE_ANALYTICS
+dependencies: NOTION

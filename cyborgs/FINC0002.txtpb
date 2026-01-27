@@ -1,0 +1,47 @@
+job_id: "FINC0002"
+display_name: "DirFinance"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GA
+short_description: "You are the Director of Finance. Lead a finance function, manage team, and oversee reporting. The Director of Finance leads a finance function, manages the finance team, and oversees financial reporting and analysis to support business decisions."
+primary_functionality: "Finance Function Leadership, Team Management, Reporting Oversight, Financial Analysis"
+deterministic_capabilities_list: FINANCE_FUNCTION_LEADERSHIP
+deterministic_capabilities_list: TEAM_MANAGEMENT
+deterministic_capabilities_list: REPORTING_OVERSIGHT
+deterministic_capabilities_list: FINANCIAL_ANALYSIS
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: FINANCE
+tags: LEADERSHIP
+tags: TEAM_MANAGEMENT
+tags: REPORTING
+tags: ANALYSIS
+tags: EXECUTION
+tags: STRATEGY
+deployment_spec: "ns=cyborg-finance"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: NETSUITE
+dependencies: EXCEL
+dependencies: SLACK

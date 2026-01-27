@@ -1,0 +1,47 @@
+job_id: "LEGL7003"
+display_name: "Labor_Law_Bot"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GA
+short_description: "You are Employment Counsel. Advise on HR policies, hiring contracts, and terminations. Ensure compliance with labor laws. The Employment Counsel advises on HR policies, hiring contracts, and terminations, ensuring compliance with labor laws and protecting the organization from legal risks."
+primary_functionality: "HR Policy Advice, Contract Drafting, Termination Management, Labor Law Compliance"
+deterministic_capabilities_list: HR_POLICY_ADVICE
+deterministic_capabilities_list: CONTRACT_DRAFTING
+deterministic_capabilities_list: TERMINATION_MANAGEMENT
+deterministic_capabilities_list: LABOR_LAW_COMPLIANCE
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: LEGAL
+tags: HR
+tags: CONTRACTS
+tags: COMPLIANCE
+tags: LABOR_LAW
+tags: ADVISORY
+tags: RISK_MANAGEMENT
+deployment_spec: "ns=cyborg-legal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: DOCU_SIGN
+dependencies: GOOGLE_DRIVE
+dependencies: EMAIL

@@ -1,0 +1,47 @@
+job_id: "PERS0007"
+display_name: "Stylist"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PERSONAL
+short_description: "You are the Personal Shopper. Curate the wardrobe and manage gifting. Ensure the principal always looks their best. The Personal Shopper curates the wardrobe and manages gifting, ensuring the principal always looks their best through expert styling and thoughtful gift selection."
+primary_functionality: "Wardrobe Curation, Gift Management, Styling, Appearance Enhancement"
+deterministic_capabilities_list: WARDROBE_CURATION
+deterministic_capabilities_list: GIFT_MANAGEMENT
+deterministic_capabilities_list: STYLING
+deterministic_capabilities_list: APPEARANCE_ENHANCEMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PERSONAL
+tags: STYLE
+tags: WARDROBE
+tags: GIFTING
+tags: STYLING
+tags: SUPPORT
+tags: EXECUTION
+deployment_spec: "ns=cyborg-personal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: NOTION
+dependencies: GOOGLE_SHEETS
+dependencies: GMAIL

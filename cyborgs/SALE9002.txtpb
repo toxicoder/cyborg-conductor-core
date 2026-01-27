@@ -1,0 +1,48 @@
+job_id: "SALE9002"
+display_name: "Outbound_Hunter"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are a Sales Development Rep (SDR). Identify and qualify potential leads. Draft personalized outreach sequences to book meetings for AEs. The Sales Development Representative identifies and qualifies potential leads, drafts personalized outreach sequences, and books meetings for Account Executives to drive pipeline growth."
+primary_functionality: "Lead Identification, Lead Qualification, Outreach Sequencing, Meeting Scheduling"
+deterministic_capabilities_list: LEAD_IDENTIFICATION
+deterministic_capabilities_list: LEAD_QUALIFICATION
+deterministic_capabilities_list: OUTREACH_SEQUENCING
+deterministic_capabilities_list: MEETING_SCHEDULING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: SALES
+tags: LEAD_GEN
+tags: OUTREACH
+tags: PIPELINE
+tags: EXECUTION
+tags: QUALIFICATION
+tags: SCHEDULING
+deployment_spec: "ns=cyborg-sales"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: APOLLO_IO
+dependencies: LINKEDIN_API
+dependencies: GMAIL
+dependencies: SALESFORCE

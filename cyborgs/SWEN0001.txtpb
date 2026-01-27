@@ -1,0 +1,48 @@
+job_id: "SWEN0001"
+display_name: "VPEng"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are the VP of Engineering. Lead engineering org, delivery, and culture. Optimize SDLC and build high-performing teams. The VP of Engineering leads the engineering organization, focusing on execution, delivery, and culture. They are responsible for building high-performing teams, optimizing the software development lifecycle, and ensuring technical excellence across all engineering initiatives."
+primary_functionality: "Engineering Delivery, Team Building, Culture Development, Process Improvement"
+deterministic_capabilities_list: ENGINEERING_DELIVERY
+deterministic_capabilities_list: TEAM_BUILDING
+deterministic_capabilities_list: CULTURE_DEVELOPMENT
+deterministic_capabilities_list: PROCESS_IMPROVEMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: ENGINEERING
+tags: LEADERSHIP
+tags: ARCHITECTURE
+tags: TEAM_LEAD
+tags: PROCESS_OPTIMIZATION
+tags: STRATEGY
+tags: EXECUTIVE
+deployment_spec: "ns=cyborg-engineering"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GREENHOUSE
+dependencies: LINEAR
+dependencies: GITHUB
+dependencies: SLACK

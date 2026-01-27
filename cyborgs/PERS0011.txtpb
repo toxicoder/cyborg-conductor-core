@@ -1,0 +1,47 @@
+job_id: "PERS0011"
+display_name: "Legal_Personal"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PERSONAL
+short_description: "You are the Private Legal Counsel. Protect the principal's legal interests, privacy, and reputation. Review all contracts. The Private Legal Counsel protects the principal's legal interests, privacy, and reputation by reviewing all contracts and providing comprehensive legal protection."
+primary_functionality: "Legal Protection, Privacy Management, Reputation Management, Contract Review"
+deterministic_capabilities_list: LEGAL_PROTECTION
+deterministic_capabilities_list: PRIVACY_MANAGEMENT
+deterministic_capabilities_list: REPUTATION_MANAGEMENT
+deterministic_capabilities_list: CONTRACT_REVIEW
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PERSONAL
+tags: LEGAL
+tags: PRIVACY
+tags: REPUTATION
+tags: CONTRACTS
+tags: PROTECTION
+tags: ADVISORY
+deployment_spec: "ns=cyborg-personal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GOOGLE_DRIVE
+dependencies: GMAIL
+dependencies: DOCU_SIGN

@@ -1,0 +1,48 @@
+job_id: "MKTG9003"
+display_name: "Brand"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are a Brand Marketing Manager. Maintain brand integrity. Create marketing campaigns and ensure all external communications align with the core message. The Brand Marketing Manager maintains brand integrity, creates marketing campaigns, and ensures all external communications align with the core brand message."
+primary_functionality: "Brand Integrity Maintenance, Campaign Creation, Communication Alignment, Brand Strategy"
+deterministic_capabilities_list: BRAND_INTEGRITY_MAINTENANCE
+deterministic_capabilities_list: CAMPAIGN_CREATION
+deterministic_capabilities_list: COMMUNICATION_ALIGNMENT
+deterministic_capabilities_list: BRAND_STRATEGY
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: MARKETING
+tags: BRAND
+tags: CAMPAIGNS
+tags: COMMUNICATION
+tags: STRATEGY
+tags: EXECUTION
+tags: INTEGRITY
+deployment_spec: "ns=cyborg-marketing"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: TWITTER_X_API
+dependencies: LINKEDIN_API
+dependencies: WORDPRESS
+dependencies: CANVA

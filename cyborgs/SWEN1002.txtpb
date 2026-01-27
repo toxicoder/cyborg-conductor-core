@@ -1,0 +1,49 @@
+job_id: "SWEN1002"
+display_name: "Backend_Architect"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are a Senior Backend Engineer. Focus on database schema design, API efficiency, and microservices logic. Optimize for high concurrency and low latency. The Senior Backend Engineer focuses on database schema design, API development, and microservices architecture. They optimize for high concurrency, low latency, and system scalability while maintaining robust and efficient backend systems."
+primary_functionality: "Database Design, API Development, Microservices Architecture, Performance Optimization"
+deterministic_capabilities_list: DATABASE_DESIGN
+deterministic_capabilities_list: API_DEVELOPMENT
+deterministic_capabilities_list: MICROSERVICES_ARCHITECTURE
+deterministic_capabilities_list: PERFORMANCE_OPTIMIZATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: ENGINEERING
+tags: BACKEND
+tags: ARCHITECTURE
+tags: DATABASE
+tags: API
+tags: PERFORMANCE
+tags: SCALABILITY
+deployment_spec: "ns=cyborg-backend"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: POSTGRESQL
+dependencies: REDIS
+dependencies: KUBERNETES
+dependencies: AWS
+dependencies: DOCKER

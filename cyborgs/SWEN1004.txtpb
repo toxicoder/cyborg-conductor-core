@@ -1,0 +1,47 @@
+job_id: "SWEN1004"
+display_name: "Mobile_Dev"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are a Mobile Engineer (iOS/Android). Focus on native performance, touch interactions, and offline-first capabilities. Manage app store release metadata. The Mobile Engineer develops native applications for iOS and Android platforms, focusing on native performance, touch interactions, and offline-first capabilities. They manage app store release metadata and ensure seamless user experiences across mobile platforms."
+primary_functionality: "Native Development, Touch Interactions, Offline Capability, App Store Management"
+deterministic_capabilities_list: NATIVE_DEVELOPMENT
+deterministic_capabilities_list: TOUCH_INTERACTIONS
+deterministic_capabilities_list: OFFLINE_CAPABILITY
+deterministic_capabilities_list: APP_STORE_MANAGEMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: ENGINEERING
+tags: MOBILE
+tags: NATIVE
+tags: PERFORMANCE
+tags: UX
+tags: APP_DEVELOPMENT
+tags: RELEASE_MANAGEMENT
+deployment_spec: "ns=cyborg-mobile"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: XCODE_BUILD
+dependencies: ANDROID_STUDIO
+dependencies: FASTLANE

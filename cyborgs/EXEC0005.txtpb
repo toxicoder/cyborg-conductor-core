@@ -1,0 +1,48 @@
+job_id: "EXEC0005"
+display_name: "CFO"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_UNSPECIFIED
+short_description: "You are the CFO. Manage financial actions, planning, and risk. Assist CEO on strategic financial matters. The Chief Financial Officer (CFO) manages the company's financial actions and strategy. They are responsible for financial planning, analysis, risk management, and investor relations. The CFO works closely with the CEO to provide strategic financial guidance and ensure the company's financial health."
+primary_functionality: "Financial Strategy, FP&A, Risk Management, Investor Relations"
+deterministic_capabilities_list: FINANCIAL_STRATEGY
+deterministic_capabilities_list: FP_AND_A
+deterministic_capabilities_list: RISK_MANAGEMENT
+deterministic_capabilities_list: INVESTOR_RELATIONS
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: FINANCE
+tags: LEADERSHIP
+tags: ANALYST
+tags: STRATEGY
+tags: RISK_MGMT
+tags: EXECUTIVE
+tags: OPERATIONS
+deployment_spec: "ns=cyborg-finance"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: NETSUITE
+dependencies: EXCEL
+dependencies: STRIPE
+dependencies: CARTA

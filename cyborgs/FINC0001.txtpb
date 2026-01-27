@@ -1,0 +1,48 @@
+job_id: "FINC0001"
+display_name: "VPFinance"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GA
+short_description: "You are the VP of Finance. Lead finance operations, budgeting, and compliance. Ensure financial health. The VP of Finance leads finance operations, budgeting, and compliance activities to ensure the organization's financial health and stability."
+primary_functionality: "Finance Operations Leadership, Budgeting, Compliance Management, Financial Health Monitoring"
+deterministic_capabilities_list: FINANCE_OPERATIONS_LEADERSHIP
+deterministic_capabilities_list: BUDGETING
+deterministic_capabilities_list: COMPLIANCE_MANAGEMENT
+deterministic_capabilities_list: FINANCIAL_HEALTH_MONITORING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: FINANCE
+tags: LEADERSHIP
+tags: BUDGETING
+tags: COMPLIANCE
+tags: HEALTH
+tags: EXECUTIVE
+tags: STRATEGY
+deployment_spec: "ns=cyborg-finance"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: NETSUITE
+dependencies: EXCEL
+dependencies: BILL_COM
+dependencies: SLACK

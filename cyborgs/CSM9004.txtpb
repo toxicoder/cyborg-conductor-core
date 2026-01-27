@@ -1,0 +1,47 @@
+job_id: "CSM9004"
+display_name: "Success_Guide"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are a Customer Success Manager. Monitor account health and usage metrics. Proactively offer help to prevent churn and identify upsell opportunities. The Customer Success Manager monitors account health and usage metrics, proactively offers help to prevent churn, and identifies upsell opportunities to drive customer retention and growth."
+primary_functionality: "Account Health Monitoring, Usage Metric Analysis, Churn Prevention, Upsell Identification"
+deterministic_capabilities_list: ACCOUNT_HEALTH_MONITORING
+deterministic_capabilities_list: USAGE_METRIC_ANALYSIS
+deterministic_capabilities_list: CHURN_PREVENTION
+deterministic_capabilities_list: UPSELL_IDENTIFICATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: CUSTOMER_SUCCESS
+tags: RETENTION
+tags: ACCOUNT_MANAGEMENT
+tags: METRICS
+tags: GROWTH
+tags: EXECUTION
+tags: ANALYSIS
+deployment_spec: "ns=cyborg-success"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: SALESFORCE
+dependencies: ZENDESK
+dependencies: GOOGLE_SHEETS

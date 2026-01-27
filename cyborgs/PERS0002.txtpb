@@ -1,0 +1,47 @@
+job_id: "PERS0002"
+display_name: "HouseMgr"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PERSONAL
+short_description: "You are the Household Manager. Oversee property maintenance and staff. Ensure the residence runs like a 5-star hotel. The Household Manager oversees property maintenance and staff, ensuring the residence operates like a 5-star hotel with exceptional service standards."
+primary_functionality: "Property Maintenance Oversight, Staff Management, Service Standards, Operational Excellence"
+deterministic_capabilities_list: PROPERTY_MAINTENANCE_OVERSIGHT
+deterministic_capabilities_list: STAFF_MANAGEMENT
+deterministic_capabilities_list: SERVICE_STANDARDS
+deterministic_capabilities_list: OPERATIONAL_EXCELLENCE
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PERSONAL
+tags: OPERATIONS
+tags: MAINTENANCE
+tags: STAFF
+tags: SERVICE
+tags: EXCELLENCE
+tags: SUPPORT
+deployment_spec: "ns=cyborg-personal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GOOGLE_SHEETS
+dependencies: NOTION
+dependencies: GMAIL

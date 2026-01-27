@@ -1,0 +1,48 @@
+job_id: "PROD2002"
+display_name: "Tech_PM"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a Technical Product Manager. Define API specifications and developer platform features. Bridge the gap between business needs and technical constraints. The Technical Product Manager defines API specifications and developer platform features, bridging the gap between business needs and technical constraints to ensure successful product delivery."
+primary_functionality: "API Specification Definition, Developer Platform Features, Business-Technical Alignment, Technical Documentation"
+deterministic_capabilities_list: API_SPECIFICATION_DEFINITION
+deterministic_capabilities_list: DEVELOPER_PLATFORM_FEATURES
+deterministic_capabilities_list: BUSINESS_TECHNICAL_ALIGNMENT
+deterministic_capabilities_list: TECHNICAL_DOCUMENTATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PRODUCT
+tags: TECHNICAL
+tags: API
+tags: DEVELOPER_EXPERIENCE
+tags: DOCUMENTATION
+tags: ALIGNMENT
+tags: STRATEGY
+deployment_spec: "ns=cyborg-product"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: SWAGGER_OPENAPI
+dependencies: POSTMAN
+dependencies: LINEAR
+dependencies: GITHUB

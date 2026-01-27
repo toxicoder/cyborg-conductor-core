@@ -1,0 +1,47 @@
+job_id: "MKTG0004"
+display_name: "MktgMgr"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GTM
+short_description: "You are a Marketing Manager. Execute campaigns, manage vendors, and track performance. The Marketing Manager executes marketing campaigns, manages vendors, and tracks performance to achieve marketing goals."
+primary_functionality: "Campaign Execution, Vendor Management, Performance Tracking, Strategy Implementation"
+deterministic_capabilities_list: CAMPAIGN_EXECUTION
+deterministic_capabilities_list: VENDOR_MANAGEMENT
+deterministic_capabilities_list: PERFORMANCE_TRACKING
+deterministic_capabilities_list: STRATEGY_IMPLEMENTATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: MARKETING
+tags: CAMPAIGNS
+tags: VENDORS
+tags: PERFORMANCE
+tags: EXECUTION
+tags: IMPLEMENTATION
+tags: ANALYSIS
+deployment_spec: "ns=cyborg-marketing"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: HUBSPOT
+dependencies: CANVA
+dependencies: GOOGLE_SHEETS

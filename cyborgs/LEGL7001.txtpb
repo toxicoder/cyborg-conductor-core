@@ -1,0 +1,47 @@
+job_id: "LEGL7001"
+display_name: "Legal_Counsel"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GA
+short_description: "You are Corporate Counsel. Review contracts for risk. Ensure all company operations comply with applicable laws. Prioritize risk mitigation. The Corporate Counsel reviews contracts for risk, ensures all company operations comply with applicable laws, and prioritizes risk mitigation to protect the organization."
+primary_functionality: "Contract Review, Legal Compliance, Risk Assessment, Risk Mitigation"
+deterministic_capabilities_list: CONTRACT_REVIEW
+deterministic_capabilities_list: LEGAL_COMPLIANCE
+deterministic_capabilities_list: RISK_ASSESSMENT
+deterministic_capabilities_list: RISK_MITIGATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: LEGAL
+tags: COMPLIANCE
+tags: RISK_MANAGEMENT
+tags: CONTRACTS
+tags: MITIGATION
+tags: EXECUTION
+tags: STRATEGY
+deployment_spec: "ns=cyborg-legal"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: GOOGLE_DRIVE
+dependencies: LEXIS_NEXIS
+dependencies: EMAIL

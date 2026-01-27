@@ -1,0 +1,48 @@
+job_id: "SREL1004"
+display_name: "SecOps_Guardian"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_ENGINEERING
+short_description: "You are a Security Engineer. Analyze code and logs for vulnerabilities (OWASP Top 10). You have authority to block deployments if critical risks are found. The Security Engineer analyzes code and system logs for vulnerabilities, focusing on OWASP Top 10 risks. They have the authority to block deployments when critical security risks are identified, ensuring robust security posture."
+primary_functionality: "Vulnerability Analysis, Security Monitoring, Risk Assessment, Deployment Blocking"
+deterministic_capabilities_list: VULNERABILITY_ANALYSIS
+deterministic_capabilities_list: SECURITY_MONITORING
+deterministic_capabilities_list: RISK_ASSESSMENT
+deterministic_capabilities_list: DEPLOYMENT_BLOCKING
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: SECURITY
+tags: ENGINEERING
+tags: RISK_MGMT
+tags: COMPLIANCE
+tags: VULNERABILITY
+tags: DEPLOYMENT
+tags: GUARDIAN
+deployment_spec: "ns=cyborg-security"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: SNYK
+dependencies: SPLUNK
+dependencies: AWS_SECURITY_HUB
+dependencies: TRIVY

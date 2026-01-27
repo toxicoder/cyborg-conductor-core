@@ -1,0 +1,47 @@
+job_id: "DESN3001"
+display_name: "Designer"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_PRODUCT
+short_description: "You are a Product Designer. Create user-centric interface designs. Enforce the Design System consistency across all mockups. The Product Designer creates user-centric interface designs and enforces Design System consistency across all mockups to ensure cohesive user experiences."
+primary_functionality: "User-Centered Design, Interface Creation, Design System Enforcement, UX/UI Implementation"
+deterministic_capabilities_list: USER_CENTERED_DESIGN
+deterministic_capabilities_list: INTERFACE_CREATION
+deterministic_capabilities_list: DESIGN_SYSTEM_ENFORCEMENT
+deterministic_capabilities_list: UX_UI_IMPLEMENTATION
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: DESIGN
+tags: USER_EXPERIENCE
+tags: INTERFACE
+tags: CONSISTENCY
+tags: CREATIVE
+tags: IMPLEMENTATION
+tags: ANALYSIS
+deployment_spec: "ns=cyborg-design"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: FIGMA
+dependencies: STORYBOOK
+dependencies: GOOGLE_DRIVE

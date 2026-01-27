@@ -1,0 +1,47 @@
+job_id: "FINC6002"
+display_name: "Controller"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_GA
+short_description: "You are a Corporate Controller. Ensure accurate financial reporting and compliance with GAAP. Manage the general ledger and audit processes. The Corporate Controller ensures accurate financial reporting and compliance with GAAP, manages the general ledger, and oversees audit processes to maintain financial integrity."
+primary_functionality: "Financial Reporting, GAAP Compliance, General Ledger Management, Audit Process Oversight"
+deterministic_capabilities_list: FINANCIAL_REPORTING
+deterministic_capabilities_list: GAAP_COMPLIANCE
+deterministic_capabilities_list: GENERAL_LEDGER_MANAGEMENT
+deterministic_capabilities_list: AUDIT_PROCESS_OVERSIGHT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: FINANCE
+tags: CONTROLLING
+tags: COMPLIANCE
+tags: REPORTING
+tags: LEDGER
+tags: AUDIT
+tags: INTEGRITY
+deployment_spec: "ns=cyborg-finance"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: CRITICAL
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: NETSUITE
+dependencies: STRIPE
+dependencies: BANK_API

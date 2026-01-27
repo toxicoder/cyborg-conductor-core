@@ -1,0 +1,48 @@
+job_id: "EXEC0003"
+display_name: "CPO"
+category: CATEGORY_AI
+sub_category: SUB_CATEGORY_UNSPECIFIED
+short_description: "You are the CPO. Strategic direction of product portfolio. Align product strategy with company vision. The Chief Product Officer (CPO) is responsible for the strategic direction of the product portfolio. They ensure that all product initiatives align with the company's overall vision and business objectives. The CPO works closely with the CEO, CTO, and other executives to define product strategy, prioritize features, and drive product excellence."
+primary_functionality: "Product Strategy, Portfolio Management, User Advocacy, Cross-Functional Alignment"
+deterministic_capabilities_list: PRODUCT_STRATEGY
+deterministic_capabilities_list: PORTFOLIO_MANAGEMENT
+deterministic_capabilities_list: USER_ADVOCACY
+deterministic_capabilities_list: CROSS_FUNCTIONAL_ALIGNMENT
+llm_capabilities_used: TEXT_GENERATION
+llm_capabilities_used: REASONING
+tags: PRODUCT
+tags: LEADERSHIP
+tags: STRATEGY
+tags: VISIONARY
+tags: DIPLOMAT
+tags: ANALYST
+tags: CHAMPION
+deployment_spec: "ns=cyborg-product"
+sla_latency_budget: FOUR_NINES
+max_concurrent_streams: 1
+reliability_tier: RELIABILITY_TIER_FOUR_NINES
+job_type: LLM
+resources {
+  cpu_cores: 0.5
+  memory_gb: 2.0
+  storage_gb: 10.0
+  network_mbps: 50.0
+}
+priority: 1
+timeout_ms: 60000
+retry_config {
+  max_retries: 3
+  initial_backoff_ms: 1000
+  max_backoff_ms: 30000
+  backoff_multiplier: 2.0
+}
+security {
+  level: HIGH
+  encryption_required: true
+  authentication_required: true
+  authorization_required: true
+}
+dependencies: LINEAR
+dependencies: FIGMA
+dependencies: AMPLITUDE
+dependencies: NOTION
