@@ -1,16 +1,10 @@
 # Cyborg Conductor Core
 
-[![Cyborg Conductor Core banner](cyborg-conductor-core-banner-wide.png)]()
+[![Cyborg Conductor Core banner](static/images/cyborg-conductor-core-banner-wide.png)]()
 
-A distributed system for efficiently managing *Cyborgs* and the physical resources they run on.
+A distributed system for orchestrating and managing cyborgs in the Main Matrix.
 
-## Definitions
-
-### Cyborg
-
-A *Cyborg* is a logically isolated entity identified by a UUID. It bundles immutable capability specifications, either *Deterministic executable handlers* or *Streamable LLM inference streams*.
-
-Cyborgs are described in a `CyborgDescriptor` protobuf with runtime state (current phase, active streams, and latency budgets) tracked separately in the `CyborgFusionEnvelope` protobuf to guarantee predictable execution and strong isolation across deployments.
+A cyborg (short for cybernetic organism) is a being with both organic and artificial parts, typically enhanced with technology to improve physical or cognitive abilities.
 
 ## Project Structure
 
@@ -28,8 +22,9 @@ Cyborgs are described in a `CyborgDescriptor` protobuf with runtime state (curre
 ├── internal/               # Internal packages
 │   ├── context/            # Context management components
 │   ├── runner/             # Cyborg runner implementations
-│   └── conductor/          # Job scheduling and orchestration
+│   └── orchestrator/       # Job scheduling and orchestration
 ├── cyborgs/                # Cyborg management
+│   ├── jobs_matrix.csv     # Cyborg job matrix
 │   └── [cyborg-id]/        # Individual cyborg directories
 ├── proto/                  # Protocol buffer definitions
 ├── adapters/               # Language adapters (Python, Node.js)
@@ -43,14 +38,60 @@ Cyborgs are described in a `CyborgDescriptor` protobuf with runtime state (curre
 
 ## Features
 
-- **Distributed Cyborg Management**: Manage multiple Cyborgs across different environments.
-- **Adaptive Scheduling**: Dynamic task assignment based on Cyborg capabilities.
-- **Back-pressure Handling**: Intelligent flow control to prevent system overload.
-- **LLM Integration**: Support for large language model streaming sessions.
-- **Observability**: Comprehensive monitoring and admin interfaces.
-- **Production-Ready**: Full CI/CD pipeline, security checks, and test coverage.
+- **Distributed Cyborg Management**: Orchestrate multiple cyborgs across different environments
+- **Adaptive Scheduling**: Dynamic task assignment based on cyborg capabilities
+- **Back-pressure Handling**: Intelligent flow control to prevent system overload
+- **LLM Integration**: Support for large language model streaming sessions
+- **Observability**: Comprehensive monitoring and admin interfaces
+- **Production-Ready**: Full CI/CD pipeline, security checks, and test coverage
 
-## Deployment
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `go mod tidy`
+3. Run the server: `go run cmd/server/main.go`
+
+## Development
+
+### Directory Structure
+
+- `cmd/server/` - Main server application entry point with HTTP endpoints
+- `pkg/core/` - Core data structures and business logic
+- `pkg/config/` - Configuration management utilities
+- `pkg/context/` - Context propagation utilities
+- `pkg/memory/` - Memory management and evidence logging
+- `internal/orchestrator/` - Job scheduling and orchestration components
+- `internal/runner/` - Cyborg runner implementations
+- `adapters/` - Language adapters for external integrations
+
+### Running the Server
+
+```bash
+go run cmd/server/main.go
+```
+
+### Testing
+
+```bash
+# Run unit tests
+go test ./test/unit/... -v
+
+# Run all tests with coverage
+go test ./... -coverprofile=coverage.txt -covermode=atomic
+
+# Run integration tests
+cd test/integration && docker-compose up --build
+```
+
+## CI/CD Pipeline
+
+This project includes a complete CI/CD pipeline with:
+
+- Automated testing and code coverage
+- Linting and static analysis
+- Security scanning
+- Build verification
+- Deployment readiness checks
 
 ### Docker Deployment
 
@@ -76,11 +117,10 @@ helm install cyborg-conductor ./charts/cyborg-conductor-core
 
 For detailed information about the Cyborg Conductor Core system, please refer to the following documentation:
 
-- [User Guide] - Complete user documentation including getting started, Cyborg management, and use cases
-- [Technical Design Document] - In-depth architectural and implementation details
-- [Contributing Guidelines] - How to contribute to the project
-
----
+- [User Guide](docs/user_guide/index.md) - Complete user documentation including getting started, agent management, and use cases
+- [Technical Design Document](docs/technical_design_doc.md) - In-depth architectural and implementation details
+- [Contributing Guidelines](CONTRIBUTING.md) - How to contribute to the project
+- [Security Policy](SECURITY.md) - Security practices and vulnerability reporting
 
 ## Support My Projects
 
